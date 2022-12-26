@@ -3,9 +3,20 @@
 
 // Write your JavaScript code.
 const connection = new signalR.HubConnectionBuilder()
-    .withUrl('/learningHub')
+    .withUrl('/learningHub', {
+        transport: signalR.HttpTransportType.WebSockets | signalR.HttpTransportType.LongPolling,
+        headers: { "Key": "value" },
+        accrssTokenFactory: null,
+        logMessageContent: true,
+        skipNegotiation: false,
+        withCredentials: true,
+        timeout: 100000,
+    })
     .configureLogging(signalR.LogLevel.Information)
     .build();
+
+connection.serverTimeoutInMilliseconds = 30000;
+connection.keepAliveIntervalInMilliseconds = 15000;
 
 connection.on('ReceiveMessage', (message) => {
     $('#signalr-message-panel').prepend($('<div />').text(message));
