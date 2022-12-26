@@ -15,6 +15,10 @@ connection.on('ConnectionIDRecived', (ID) => {
     $('#connectionID').val(ID);
 });
 
+connection.on('ReceiveGroupMessage', (message) => {
+    $('#signalr-message-panel-group').prepend($('<div />').text(message));
+});
+
 $('#btn-broadcast').click(() => {
     var message = $('#broadcast').val();
     connection.invoke('BrodcastMessage', message)
@@ -47,17 +51,15 @@ $('#btn-broadcast-group').click(() => {
         .catch(err => alert(err));
 });
 
-$('#btn-individual-message').click(() => {
-    var connectioID = $('#user-connection-id').val();
-    var message = $('#broadcast').val();
-    connection.invoke('AddUserToGroup', connectioID, message)
+$('#btn-add-user-group').click(() => {
+    var userGroup = $('#user-group-to-add').val();
+    connection.invoke('AddUserToGroup', userGroup)
         .catch(err => alert(err));
 });
 
-$('#btn-individual-message').click(() => {
-    var connectioID = $('#user-connection-id').val();
-    var message = $('#broadcast').val();
-    connection.invoke('RemoveUserFromGroup', connectioID, message)
+$('#btn-remove-user-group').click(() => {
+    var userGroup = $('#user-group-to-remove').val();
+    connection.invoke('RemoveUserFromGroup', userGroup)
         .catch(err => alert(err));
 });
 
