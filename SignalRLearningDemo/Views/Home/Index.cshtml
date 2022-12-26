@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Connection ID</span>
+            <input type="text" class="form-control" id="connectionID" disabled />
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Message</span>
+            <input type="text" class="form-control" placeholder="Enter Message" id="broadcast" />
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">User Connection ID</span>
+            <input type="text" class="form-control" placeholder="Enter Message" id="user-connection-id" />
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success" id="btn-broadcast">Broadcast</button>
+            <button class="btn btn-warning" id="btn-other-message">Send To Others</button>
+            <button class="btn btn-danger" id="btn-self-message">Send To Self</button>
+            <button class="btn btn-info" id="btn-individual-message">Send To Specific User</button>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">SignalR Message</div>
+            <div class="card-body">
+                <div id="signalr-message-panel"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Message</span>
+            <input type="text" class="form-control" placeholder="Enter Message" id="broadcast-group" />
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Group Name</span>
+            <input type="text" class="form-control" placeholder="Enter Message" id="user-group" />
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success" id="btn-broadcast-group">Send To Group</button>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Group Name</span>
+            <input type="text" class="form-control" placeholder="Enter Message" id="user-group-to-add" />
+        </div>
+        <div class="text-center">
+            <button class="btn btn-info" id="btn-add-user-group">Add User To Group</button>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Group Name</span>
+            <input type="text" class="form-control" placeholder="Enter Message" id="user-group-to-remove" />
+        </div>
+        <div class="text-center">
+            <button class="btn btn-danger" id="btn-remove-user-group">Remove User To Group</button>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">SignalR Message</div>
+            <div class="card-body">
+                <div id="signalr-message-panel-group"></div>
+            </div>
+        </div>
+    </div>
+</div>
