@@ -43,6 +43,11 @@ builder.Services.AddSignalR(hubOptions =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowMySpace", builder => builder.WithOrigins("https://localhost:7038").AllowAnyMethod().AllowAnyHeader().AllowCredentials());
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -59,6 +64,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseCors("AllowMySpace");
 
 app.MapHub<LearningHub>("/learningHub", options =>
 {
